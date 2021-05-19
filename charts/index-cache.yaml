@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  jcoc-hello-world:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-05-19T17:16:25.51400915Z"
+    description: A Helm chart for Kubernetes
+    digest: ba6b695b566376750e0c2583d4ae26898376c8fbe33bcf4ddffe72bc440edd51
+    name: jcoc-hello-world
+    type: application
+    urls:
+    - charts/jcoc-hello-world-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-05-19T17:17:35Z"
+serverInfo: {}
