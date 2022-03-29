@@ -52,7 +52,7 @@ spec:
             - "--tls-private-key-file"
             - "/etc/tls-volume/.key-file"
             {{- end }}
-            {{- if (not (and .Values.serverTLS.useLocalFiles .Values.serverTLS.useSecret) )}}
+            {{- if and ( eq .Values.serverTLS.useLocalFiles false ) (eq .Values.serverTLS.useSecret false )}}
             - "--insecure"
             {{- end }}
           {{- with .Values.additionalArgs }}
@@ -96,7 +96,7 @@ spec:
           secret:
             secretName: {{ .Values.serverTLS.secretName }}
       {{ end }}
-      {{- if .Values.serverTLS.useLocalFiles -}}
+      {{- if .Values.serverTLS.useLocalFiles }}
       volumes:
         - name: tls-volume
           downwardAPI:
