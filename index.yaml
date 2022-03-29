@@ -11,4 +11,16 @@ entries:
     urls:
     - https://github.com/josecordaz/helm-hello-world/releases/download/jcoc-hello-world-0.1.0/jcoc-hello-world-0.1.0.tgz
     version: 0.1.0
-generated: "2022-03-29T17:50:15.16059375Z"
+  weave-gitops:
+  - apiVersion: v2
+    appVersion: v0.6.2
+    created: "2022-03-29T17:58:18.148371868Z"
+    description: Weave Gitops is a set of tools and services to aid your interactions
+      with Flux
+    digest: c4312df7a8b6b34790a32fbfb67afdaaf4c51917caf3813bf27949b1030b56e2
+    name: weave-gitops
+    type: application
+    urls:
+    - https://github.com/josecordaz/helm-hello-world/releases/download/weave-gitops-1.1.0/weave-gitops-1.1.0.tgz
+    version: 1.1.0
+generated: "2022-03-29T17:58:18.148379768Z"
