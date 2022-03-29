@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  jcoc-hello-world:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-03-29T17:50:15.16058735Z"
+    description: A Helm chart for Kubernetes
+    digest: b6fa446f5057fb7f7de29c8db81c5cac05c9b9fee077e7adc31c370f9f827294
+    name: jcoc-hello-world
+    type: application
+    urls:
+    - https://github.com/josecordaz/helm-hello-world/releases/download/jcoc-hello-world-0.1.0/jcoc-hello-world-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-03-29T17:50:15.16059375Z"
