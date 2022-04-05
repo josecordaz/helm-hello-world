@@ -14,6 +14,17 @@ entries:
   weave-gitops:
   - apiVersion: v2
     appVersion: v0.6.2
+    created: "2022-04-05T18:43:35.482108511Z"
+    description: Weave Gitops is a set of tools and services to aid your interactions
+      with Flux
+    digest: a20763af77e498ef0d4b28b8b944387a438fa3066130ca3d470a3c8b066a185e
+    name: weave-gitops
+    type: application
+    urls:
+    - https://github.com/josecordaz/helm-hello-world/releases/download/weave-gitops-1.1.2/weave-gitops-1.1.2.tgz
+    version: 1.1.2
+  - apiVersion: v2
+    appVersion: v0.6.2
     created: "2022-03-29T18:57:12.415333794Z"
     description: Weave Gitops is a set of tools and services to aid your interactions
       with Flux
@@ -34,4 +45,4 @@ entries:
     urls:
     - https://github.com/josecordaz/helm-hello-world/releases/download/weave-gitops-1.1.0/weave-gitops-1.1.0.tgz
     version: 1.1.0
-generated: "2022-03-29T18:57:12.415341294Z"
+generated: "2022-04-05T18:43:35.482128915Z"
