@@ -3,18 +3,15 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-
 image:
   # FIXME check the app name
   repository: josecordaz/wego-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "4.0"
-
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
 # Sets the WEAVE_GITOPS_AUTH_ENABLED environment variable to enable auth systems
 enableLogin: true
 # valid levels are 'debug', 'info', 'warn' and 'error'
@@ -32,7 +29,6 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
-
 rbac:
   # Specifies whether the clusterRole & binding to the service account should be created
   create: true
@@ -40,11 +36,10 @@ rbac:
   # recommended that you configure groups that can be used to populate this.
   impersonationResourceNames: []
   # Limit the type of principal that can be impersonated
-  impersonationResources: [ "users", "groups" ]
+  impersonationResources: ["users", "groups"]
   # Specify whether additional permissions should be granted to the service account
   # in order to work with weave-gitops enterprise
   viewSecrets: []
-
 # This should not be used in production
 adminUser:
   # Whether the wego-admin user should be created.
@@ -56,31 +51,28 @@ adminUser:
   # It should not be stored in plain-text so is best passed using a set flag:
   # --set adminUser.password="My $uper secure password that is not this $tring"
   # password:
-
 podAnnotations: {}
-
 podSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+# capabilities:
+#   drop:
+#   - ALL
+# readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
 
 service:
   create: true
   type: ClusterIP
   port: 9001
-
 ingress:
   enabled: false
   className: ""
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  # kubernetes.io/ingress.class: nginx
+  # kubernetes.io/tls-acme: "true"
   hosts:
     - host: chart-example.local
       paths:
@@ -90,32 +82,42 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+# limits:
+#   cpu: 100m
+#   memory: 128Mi
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
 
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}
-
 serverTLS:
-  # This block is meant to use a secret as a source for the tls info
-  useSecret: false # Use secret to pass in tls info to the gitops server
-  secretName: "" # Specify the secret name that contains certificate and private key info
-  certContentField: "" # Specify the key within the secret that contains the certificate
-  keyContentField: "" # Specify the key within the secret that contains the private key
-  # This block is meant to pass in local files directly to the gitops server
-  useLocalFiles: false # Use local files to pass in tls info to the gitops server
-  localCertFile: "" # Specify the path for the local certificate file (it needs to be relative  to the charts folder)
-  localKeyFile: "" # Specify the path for the local private key file (it needs to be relative  to the charts folder)
+  enable: false
+  # secretName: "my-secret-tls" # Specify the tls secret name. This type of secrets have a key called `tls.crt` and `tls.key` containing their corresponding values in  base64 format.
+  #
+  # Example of tls secret
+  #
+  #  apiVersion: v1
+  #  kind: Secret
+  #  metadata:
+  #    name: my-secret-tls
+  #  type: kubernetes.io/tls
+  #  data:
+  #    # the data is abbreviated in this example
+  #    tls.crt: |
+  #      MIIC2DCCAcCgAwIBAgIBATANBgkqh ...
+  #    tls.key: |
+  #      MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...
+  #
+  # You can also create a tls secre t from files whith this k8s command:
+  # kubectl create secret tls my-tls-secret \
+  #  --cert=path/to/cert/file \
+  #  --key=path/to/key/file
+  #
+  # Reference: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
